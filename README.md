@@ -2,7 +2,9 @@
 
 According to [CB-6223](https://issues.apache.org/jira/browse/CB-6223), I couldn't make [GAPlugin](https://github.com/phonegap-build/GAPlugin) work with latest Cordova (3.4.0-0.1.3). [@peacemoon](https://github.com/peacemoon) proposed [a working pull request](https://github.com/phonegap-build/GAPlugin/pull/49) but I don't know when it will be merged. So I forked into this repo and made it work for me.
 
-@peacemoon's fork didn't include Android's source files. So I grabbed original GAPlugin's Android source and put it back in. Since Android version is still using Google Analytics SDK version 2, **this make iOS and Android use the different version of Google Analytics SDK.**So, use this as your own risk.
+@peacemoon's fork didn't include Android's source files. So I grabbed original GAPlugin's Android source and put it back in. Since Android version is still using Google Analytics SDK version 2, **this make iOS and Android use the different versions of Google Analytics SDK.** So, use this as your own risk.
+
+this is how i made it work.
 
 ```sh
 # create a vanilla cordova project
@@ -22,7 +24,7 @@ then, add GAPlugin.
 ```sh
 # add GAPlugin from this repository
 $ cordova plugin add https://github.com/armno/GAPlugin.git
-$ cordova build ios
+$ cordova build ios # or android
 ```
 
 original readme is below this line
