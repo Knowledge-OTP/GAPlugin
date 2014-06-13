@@ -4,6 +4,8 @@ According to [CB-6223](https://issues.apache.org/jira/browse/CB-6223), I couldn'
 
 @peacemoon's fork didn't include Android's source files. So I grabbed original GAPlugin's Android source and put it back in. Since Android version is still using Google Analytics SDK version 2, **this make iOS and Android use the different versions of Google Analytics SDK.** So, use this as your own risk.
 
+this repo doesn't have Google Analytics SDK included. there is [iOS](https://developers.google.com/analytics/devguides/collection/ios/resources) version on google dev website.
+
 this is how i made it work.
 
 ```sh
@@ -57,7 +59,7 @@ simply execute plugman as follows;
 		[PLATFORM] = ios or android
 		[TARGET-PATH] = path to folder containing your xcode project
 		[PLUGIN-PATH] = path to folder containing this plugin
-		
+
 For additional info, take a look at the [Plugman Documentation](https://github.com/apache/cordova-plugman/blob/master/README.md)
 
 ### PhoneGap Build
@@ -90,9 +92,9 @@ Init takes 4 arguments;
 		avoid setting this value too low, to limit the overhead of sending data.
 
 Example:
-	
+
 	gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
-	
+
 To track an event, call (oddly enough) trackEvent().
 trackEvent takes 6 arguments;
 
@@ -102,9 +104,9 @@ trackEvent takes 6 arguments;
 	4)	eventAction - This is the type of event you are sending such as "Click", "Select". etc.
 	5)	eventLabel - A label that describes the event such as Button title or Menu Item name.
 	6)	eventValue - An application defined integer value that can mean whatever you want it to mean.
-	
+
 Example:
-	
+
 	gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
 
 TrackEvent covers most of what you need, but there may be cases where you want to pass arbitrary data.
@@ -121,11 +123,11 @@ setVariable() accepts 4 arguments;
 Example:
 
 	gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
-	
+
 ####Important:
-Variable values are assigned to what Google calls Custom Dimensions in the dashboard. Prior to calling setVariable() in your client for a particular index, you need to create a slot in the GA dashboard. When you do so, you will be able to assign a name for the dimension, its index, and its scope. More info on creating Custom Dimensions can be found [here](https://support.google.com/analytics/answer/2709829?hl=en&ref_topic=2709827).	
+Variable values are assigned to what Google calls Custom Dimensions in the dashboard. Prior to calling setVariable() in your client for a particular index, you need to create a slot in the GA dashboard. When you do so, you will be able to assign a name for the dimension, its index, and its scope. More info on creating Custom Dimensions can be found [here](https://support.google.com/analytics/answer/2709829?hl=en&ref_topic=2709827).
 The next event or page view you send after setVariable will contain your variable at Custom Dimension specified by the index value you passed in the setVariable call. This [Example](https://github.com/phonegap-build/GAPlugin/blob/master/Example/index.html) app shows how you might use that next event to specify a label for the variable you just set.
-	
+
 In addition to events and variables, you can also log page visits with trackPage(). Unlike variables, however, page hits do not require a subsequent call to trackEvent() as they are considered unique events in and of themselves.
 trackPage() takes 3 arguments;
 
@@ -136,7 +138,7 @@ trackPage() takes 3 arguments;
 Example:
 
 	gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
-	
+
 Finally, when your app shuts down, you'll want to cleanup after yourself by calling exit();
 exit() accepts 2 arguments;
 
@@ -145,15 +147,15 @@ exit() accepts 2 arguments;
 Example:
 
 	gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
-	
+
 This package includes an Example folder containing an index.html file showing how all of this fits together.
 Note that the contents of Examples does not get installed anywhere by pluginstall. Its just there to provide a usage example.
 
 ## More Info
-	
+
 GAPlugin includes libraries from Google Analytics SDK for iOS and for Android.
 Use of those libraries is subject to [Google Analytics Terms of Service](http://www.google.com/analytics/terms/us.html)
-	
+
 Also take a look at [Google Analytics Developer Guides](https://developers.google.com/analytics/devguides/)
 
 ## License ##
