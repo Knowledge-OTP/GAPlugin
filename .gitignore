@@ -1,4 +1,3 @@
-
-src/ios/.DS_Store
-
 .DS_Store
+*.sublime-project
+*.sublime-workspace

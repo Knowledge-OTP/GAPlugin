@@ -8,11 +8,14 @@ import com.google.analytics.tracking.android.GAServiceManager;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 
+import android.util.Log;
+
 public class GAPlugin extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callback) {
 		GoogleAnalytics ga = GoogleAnalytics.getInstance(cordova.getActivity());
-		Tracker tracker = ga.getDefaultTracker(); 
+		Tracker tracker = ga.getDefaultTracker();
+		public static final TAG = "GAPlugin";
 
 		if (action.equals("initGA")) {
 			try {
