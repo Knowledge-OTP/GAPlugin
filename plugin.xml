@@ -59,5 +59,6 @@
     <framework src="libz.dylib" />
     <framework src="CoreData.framework" />
     <framework src="SystemConfiguration.framework" />
+    <framework src="AdSupport.framework" />
   </platform>
 </plugin>
