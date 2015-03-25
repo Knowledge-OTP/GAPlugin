@@ -22,7 +22,7 @@
 	</engines>
 
 	<platform name="android">
-		<dependency id="com.google.playservices@19.0.0" />
+		<dependency id="com.google.playservices" />
 
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="GAPlugin" >

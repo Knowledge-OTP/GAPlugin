@@ -15,7 +15,7 @@ public class GAPlugin extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, CallbackContext callback) {
 		GoogleAnalytics ga = GoogleAnalytics.getInstance(cordova.getActivity());
 		Tracker tracker = ga.getDefaultTracker();
-		public static final TAG = "GAPlugin";
+		static final TAG = "GAPlugin";
 
 		if (action.equals("initGA")) {
 			try {
