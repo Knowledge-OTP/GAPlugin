@@ -22,7 +22,6 @@
 	</engines>
 
 	<platform name="android">
-		<dependency id="com.google.playservices" />
 
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="GAPlugin" >
@@ -32,6 +31,8 @@
 
 		<source-file src="src/android/GAPlugin.java"
 			target-dir="src/com/adobe/plugins" />
+
+		<framework src="com.google.android.gms:play-services-analytics:+"/>
 	</platform>
 
 	<platform name="ios">
